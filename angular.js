@@ -6834,6 +6834,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
             bindings.push(interpolateFn);
             safeAddClass(parent.data('$binding', bindings), 'ng-binding');
             scope.$watch(interpolateFn, function interpolateFnWatchAction(value) {
+              if(node[0].parentNode===null) { return; }
               node[0].nodeValue = value;
             });
           })
